@@ -1,0 +1,58 @@
+
+.sidedrawer_item_container {
+    padding: 1rem .5rem;
+    border-bottom: 1px solid #c6d0da;;
+    
+    background-color: white;
+    .sidedrawer_item_link{
+
+        text-decoration: none;
+    }
+    .sidedrawer_item.is-alert{
+        .list_item_chevron{
+            color: #828585;
+        }
+        color:#e64135;
+    }
+    .sidedrawer_item{
+        
+        
+        display: flex;
+        color: #828585;
+       justify-content: space-around;
+       .list_item_icon{
+           min-width: 2rem;
+           padding-left: .5rem;
+       }
+        .list_item_spacer{
+            flex: 1;
+        }
+        .list_item_chevron{
+            padding-right: .5rem;
+        }
+    }
+
+}
+
+@media (min-width: 550px) {
+
+
+    .sidedrawer_item_container {
+        padding: 12px 6px;
+        border-bottom: 0px ;
+        background-color: white;
+        .sidedrawer_item_link{
+    
+            text-decoration: none;
+        }
+        .sidedrawer_item{
+            
+            
+            display: flex;
+            color: #828585;
+           justify-content: space-around;
+            
+        }
+    
+    }
+  }
