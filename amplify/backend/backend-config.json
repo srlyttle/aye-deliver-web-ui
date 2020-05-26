@@ -1,0 +1,26 @@
+{
+    "auth": {
+        "ayedeliverwebui3a345ff1": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": []
+        }
+    },
+    "api": {
+        "ayedeliveramplifyapi": {
+            "service": "AppSync",
+            "providerPlugin": "awscloudformation",
+            "output": {
+                "authConfig": {
+                    "additionalAuthenticationProviders": [],
+                    "defaultAuthentication": {
+                        "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+                        "userPoolConfig": {
+                            "userPoolId": "authayedeliverwebui3a345ff1"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
