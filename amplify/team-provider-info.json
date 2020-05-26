@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-ayedeliverwebui-dev-125150-authRole",
+            "UnauthRoleArn": "arn:aws:iam::572325211738:role/amplify-ayedeliverwebui-dev-125150-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::572325211738:role/amplify-ayedeliverwebui-dev-125150-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-ayedeliverwebui-dev-125150-deployment",
+            "UnauthRoleName": "amplify-ayedeliverwebui-dev-125150-unauthRole",
+            "StackName": "amplify-ayedeliverwebui-dev-125150",
+            "StackId": "arn:aws:cloudformation:eu-west-1:572325211738:stack/amplify-ayedeliverwebui-dev-125150/cb4cd840-9ceb-11ea-af1b-0265d6cdeea8",
+            "AmplifyAppId": "d1w7zax96vbtkx"
+        },
+        "categories": {
+            "auth": {
+                "ayedeliverwebui3a345ff1": {}
+            }
+        }
+    }
+}
