@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import React from "react";
-import "./backdrop.styles.scss";
+import PropTypes from 'prop-types';
+import React from 'react';
+import './backdrop.styles.scss';
 
 const Backdrop = props => <div className="backdrop" onClick={props.click} />;
 
