@@ -6,7 +6,7 @@ type Note @model @auth(rules: [{ allow: owner, identityField: "sub" }]) {
 type Market @model @searchable {
   id: ID!
   name: String!
-  Products: [Product]
+  products: [Product]
     @connection(name: "MarketProducts", sortField: "createdAt")
   tags: [String]
   owner: String!
@@ -16,7 +16,7 @@ type Market @model @searchable {
 type Product @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   description: String!
-  market: [Market] @connection(name: "MarketProducts")
+  market: Market @connection(name: "MarketProducts")
   file: S3Object!
   price: Float!
   shipped: Boolean!

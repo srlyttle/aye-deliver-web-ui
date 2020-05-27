@@ -8,12 +8,13 @@ import {
   faDollarSign,
   faQuestion,
   faDoorClosed,
-  faStickyNote
+  faStickyNote,
+  faUser
 } from '@fortawesome/free-solid-svg-icons';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 
-const SideDrawerItem = ({ text, route, icon, alert }) => {
+const SideDrawerItem = ({ text, route, icon, alert, clickHandle }) => {
   let itemIcon;
   switch (icon) {
     case 'deliver':
@@ -31,6 +32,9 @@ const SideDrawerItem = ({ text, route, icon, alert }) => {
     case 'sticky-note':
       itemIcon = <FontAwesomeIcon icon={faStickyNote} />;
       break;
+    case 'user':
+      itemIcon = <FontAwesomeIcon icon={faUser} />;
+      break;
 
     default:
       break;
@@ -39,7 +43,7 @@ const SideDrawerItem = ({ text, route, icon, alert }) => {
 
   return (
     <li className="sidedrawer_item_container">
-      <Link to={route} className="sidedrawer_item_link">
+      <Link to={route} className="sidedrawer_item_link" onClick={clickHandle}>
         <div
           className={cx('sidedrawer_item', {
             'is-alert': alert
@@ -59,7 +63,8 @@ SideDrawerItem.propTypes = {
   alert: PropTypes.any,
   icon: PropTypes.any,
   route: PropTypes.any,
-  text: PropTypes.any
+  text: PropTypes.any,
+  clickHandle: PropTypes.func
 };
 
 export default SideDrawerItem;
