@@ -1,12 +1,16 @@
-import React from "react";
-import { Button } from "antd";
+import React from 'react';
+import { Button } from 'antd';
+import PropTypes from 'prop-types';
 
-const CustomButton = () => {
+const CustomButton = ({ text }) => {
   return (
     <Button type="primary" block>
-      Sign up or log in
+      {text}
     </Button>
   );
 };
 
+CustomButton.propTypes = {
+  text: PropTypes.string
+};
 export default CustomButton;
