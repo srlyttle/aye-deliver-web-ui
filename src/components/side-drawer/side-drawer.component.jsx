@@ -50,9 +50,9 @@ const SideDrawer = ({ close, show, user, signout }) => {
     },
     {
       id: 4,
-      text: 'Notes',
-      route: '/notes',
-      icon: 'sticky-note',
+      text: 'Markets',
+      route: '/nomarketstes',
+      icon: 'shopping-basket',
       alert: false,
       clickHandle: clickFunction,
       authRequired: true

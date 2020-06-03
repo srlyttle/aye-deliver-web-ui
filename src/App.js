@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { Auth, Hub } from 'aws-amplify';
-import { Authenticator, AmplifyTheme } from 'aws-amplify-react';
+import { Authenticator } from 'aws-amplify-react';
 import PropTypes from 'prop-types';
 import HomePage from '../src/pages/home/home.component';
 import MarketPage from '../src/pages/market/market.component';
+import MarketListPage from '../src/pages/market/market-list.component';
 import ProfilePage from '../src/pages/profile/profile.component';
 import Toolbar from './components/toolbar/toolbar.component';
 import SideDrawer from './components/side-drawer/side-drawer.component';
 import Backdrop from './components/backdrop/backdrop.component';
-import NotesPage from './pages/notes/notes.component';
 
 import './App.scss';
 
+export const UserContext = React.createContext();
 function App({ history }) {
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [user, setUser] = useState(null);
@@ -77,7 +78,7 @@ function App({ history }) {
   }
   return (
     <>
-      <div style={{ height: '100%' }}>
+      <div className="app-container" style={{ height: '100%' }}>
         <Toolbar drawerClickHandler={drawerToggleClickHandler} />
         <SideDrawer
           close={backdropClickHandler}
@@ -88,26 +89,28 @@ function App({ history }) {
         {backdrop}
         <div className="main__content">
           <main style={{ height: '100vh' }}>
-            <Switch>
-              <Route exact path="/" component={HomePage} />
-              <Route exact path="/notes" component={NotesPage} />
-              <Route exact path="/profile" component={ProfilePage} />
-              <Route
-                exact
-                path="/login"
-                component={() => {
-                  return user ? null : <Authenticator />;
-                }}
-              />
-              <Route
-                exact
-                path="/markets/:marketId"
-                component={({ match }) => {
-                  const marketId = match.params.marketId;
-                  return <MarketPage marketId={marketId} />;
-                }}
-              />
-            </Switch>
+            <UserContext.Provider value={{ user }}>
+              <Switch>
+                <Route exact path="/" component={MarketListPage} />
+                <Route exact path="/markets" component={MarketListPage} />
+                <Route exact path="/profile" component={ProfilePage} />
+                <Route
+                  exact
+                  path="/login"
+                  component={() => {
+                    return user ? null : <Authenticator />;
+                  }}
+                />
+                <Route
+                  exact
+                  path="/markets/:marketId"
+                  component={({ match }) => {
+                    const marketId = match.params.marketId;
+                    return <MarketPage marketId={marketId} />;
+                  }}
+                />
+              </Switch>
+            </UserContext.Provider>
           </main>
         </div>
       </div>
