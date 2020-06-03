@@ -1,9 +1,13 @@
-
 @import '~antd/dist/antd.css';
 .App {
   text-align: center;
 }
-
+.app-container {
+  position: fixed;
+  top: 3rem;
+  left: 0;
+  width: 100vw;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -14,8 +18,9 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-.main__content{
-  margin-top: 4rem;
+.main__content {
+  margin-top: 2rem;
+  overflow-x: scroll;
 }
 .App-header {
   background-color: #282c34;
@@ -41,4 +46,4 @@
   }
 }
 
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');

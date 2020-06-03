@@ -9,7 +9,8 @@ import {
   faQuestion,
   faDoorClosed,
   faStickyNote,
-  faUser
+  faUser,
+  faShoppingBasket
 } from '@fortawesome/free-solid-svg-icons';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
@@ -34,6 +35,9 @@ const SideDrawerItem = ({ text, route, icon, alert, clickHandle }) => {
       break;
     case 'user':
       itemIcon = <FontAwesomeIcon icon={faUser} />;
+      break;
+    case 'shopping-basket':
+      itemIcon = <FontAwesomeIcon icon={faShoppingBasket} />;
       break;
 
     default:
