@@ -51,7 +51,7 @@ const SideDrawer = ({ close, show, user, signout }) => {
     {
       id: 4,
       text: 'Markets',
-      route: '/nomarketstes',
+      route: '/markets',
       icon: 'shopping-basket',
       alert: false,
       clickHandle: clickFunction,

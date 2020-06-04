@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import { Auth, Hub } from 'aws-amplify';
 import { Authenticator } from 'aws-amplify-react';
 import PropTypes from 'prop-types';
@@ -36,12 +36,14 @@ function App({ history }) {
       const { payload } = data;
       switch (payload.event) {
         case 'signIn':
-          history.push('/');
           setSideDrawerOpen(false);
+
           getAuthUser();
+          history.push('/markets');
           break;
         case 'signOut':
           setUser(null);
+          history.push('/markets');
           break;
 
         default:
@@ -91,16 +93,28 @@ function App({ history }) {
           <main style={{ height: '100vh' }}>
             <UserContext.Provider value={{ user }}>
               <Switch>
-                <Route exact path="/" component={MarketListPage} />
-                <Route exact path="/markets" component={MarketListPage} />
+                <Route exact path="/" component={HomePage} />
+                {/* <Route exact path="/markets" component={MarketListPage} /> */}
+                <Route
+                  exact
+                  path="/markets"
+                  component={() => {
+                    return user ? <MarketListPage /> : <Redirect to="/login" />;
+                  }}
+                />
                 <Route exact path="/profile" component={ProfilePage} />
                 <Route
                   exact
                   path="/login"
                   component={() => {
-                    return user ? null : <Authenticator />;
+                    return user ? (
+                      <Redirect to="/markets" />
+                    ) : (
+                      <Authenticator />
+                    );
                   }}
                 />
+
                 <Route
                   exact
                   path="/markets/:marketId"
