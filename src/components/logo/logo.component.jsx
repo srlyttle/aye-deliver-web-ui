@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 export const Logo = () => {
   return (
     <div className="toolbar__logo">
       <a href="/">
-        Aye <span className="logo-deliver">Deliver</span>{" "}
+        Aye <span className="logo-deliver">Reserve</span>
       </a>
     </div>
   );

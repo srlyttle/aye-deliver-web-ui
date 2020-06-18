@@ -63,3 +63,25 @@ type ShippingAddress {
   address_state: String!
   address_zip: String!
 }
+
+type Venue @model @searchable {
+  id: ID!
+  name: String!
+  Seatings: [Seating] @connection(name: "VenueSeatings", sortField: "createdAt")
+  tags: [String]
+  owner: String!
+  createdAt: String
+}
+type Seating @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  name: String!
+  description: String
+  venue: Venue @connection(name: "VenueSeatings")
+  file: S3Object
+  outside: Boolean!
+  maxPeople: String!
+  foodOnly: Boolean
+  depositRequired: Boolean
+  owner: String
+  createdAt: String
+}

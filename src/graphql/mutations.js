@@ -318,3 +318,198 @@ export const createOrder = /* GraphQL */ `
     }
   }
 `;
+export const createVenue = /* GraphQL */ `
+  mutation CreateVenue(
+    $input: CreateVenueInput!
+    $condition: ModelVenueConditionInput
+  ) {
+    createVenue(input: $input, condition: $condition) {
+      id
+      name
+      Seatings {
+        items {
+          id
+          name
+          description
+          outside
+          maxPeople
+          foodOnly
+          depositRequired
+          owner
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      tags
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateVenue = /* GraphQL */ `
+  mutation UpdateVenue(
+    $input: UpdateVenueInput!
+    $condition: ModelVenueConditionInput
+  ) {
+    updateVenue(input: $input, condition: $condition) {
+      id
+      name
+      Seatings {
+        items {
+          id
+          name
+          description
+          outside
+          maxPeople
+          foodOnly
+          depositRequired
+          owner
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      tags
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteVenue = /* GraphQL */ `
+  mutation DeleteVenue(
+    $input: DeleteVenueInput!
+    $condition: ModelVenueConditionInput
+  ) {
+    deleteVenue(input: $input, condition: $condition) {
+      id
+      name
+      Seatings {
+        items {
+          id
+          name
+          description
+          outside
+          maxPeople
+          foodOnly
+          depositRequired
+          owner
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      tags
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createSeating = /* GraphQL */ `
+  mutation CreateSeating(
+    $input: CreateSeatingInput!
+    $condition: ModelSeatingConditionInput
+  ) {
+    createSeating(input: $input, condition: $condition) {
+      id
+      name
+      description
+      venue {
+        id
+        name
+        Seatings {
+          nextToken
+        }
+        tags
+        owner
+        createdAt
+        updatedAt
+      }
+      file {
+        bucket
+        region
+        key
+      }
+      outside
+      maxPeople
+      foodOnly
+      depositRequired
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateSeating = /* GraphQL */ `
+  mutation UpdateSeating(
+    $input: UpdateSeatingInput!
+    $condition: ModelSeatingConditionInput
+  ) {
+    updateSeating(input: $input, condition: $condition) {
+      id
+      name
+      description
+      venue {
+        id
+        name
+        Seatings {
+          nextToken
+        }
+        tags
+        owner
+        createdAt
+        updatedAt
+      }
+      file {
+        bucket
+        region
+        key
+      }
+      outside
+      maxPeople
+      foodOnly
+      depositRequired
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteSeating = /* GraphQL */ `
+  mutation DeleteSeating(
+    $input: DeleteSeatingInput!
+    $condition: ModelSeatingConditionInput
+  ) {
+    deleteSeating(input: $input, condition: $condition) {
+      id
+      name
+      description
+      venue {
+        id
+        name
+        Seatings {
+          nextToken
+        }
+        tags
+        owner
+        createdAt
+        updatedAt
+      }
+      file {
+        bucket
+        region
+        key
+      }
+      outside
+      maxPeople
+      foodOnly
+      depositRequired
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;

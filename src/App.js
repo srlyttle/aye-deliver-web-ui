@@ -4,8 +4,10 @@ import { Auth, Hub } from 'aws-amplify';
 import { Authenticator } from 'aws-amplify-react';
 import PropTypes from 'prop-types';
 import HomePage from '../src/pages/home/home.component';
-import MarketPage from '../src/pages/market/market.component';
-import MarketListPage from '../src/pages/market/market-list.component';
+import VenuePage from '../src/pages/venue/venue.component';
+
+import VenueListPage from '../src/pages/venue/venue-list.component';
+
 import ProfilePage from '../src/pages/profile/profile.component';
 import Toolbar from './components/toolbar/toolbar.component';
 import SideDrawer from './components/side-drawer/side-drawer.component';
@@ -39,11 +41,11 @@ function App({ history }) {
           setSideDrawerOpen(false);
 
           getAuthUser();
-          history.push('/markets');
+          history.push('/');
           break;
         case 'signOut':
           setUser(null);
-          history.push('/markets');
+          history.push('/login');
           break;
 
         default:
@@ -94,12 +96,11 @@ function App({ history }) {
             <UserContext.Provider value={{ user }}>
               <Switch>
                 <Route exact path="/" component={HomePage} />
-                {/* <Route exact path="/markets" component={MarketListPage} /> */}
                 <Route
                   exact
-                  path="/markets"
+                  path="/venues"
                   component={() => {
-                    return user ? <MarketListPage /> : <Redirect to="/login" />;
+                    return user ? <VenueListPage /> : <Redirect to="/login" />;
                   }}
                 />
                 <Route exact path="/profile" component={ProfilePage} />
@@ -107,20 +108,16 @@ function App({ history }) {
                   exact
                   path="/login"
                   component={() => {
-                    return user ? (
-                      <Redirect to="/markets" />
-                    ) : (
-                      <Authenticator />
-                    );
+                    return user ? <Redirect to="/venues" /> : <Authenticator />;
                   }}
                 />
 
                 <Route
                   exact
-                  path="/markets/:marketId"
+                  path="/venue/:venueId"
                   component={({ match }) => {
-                    const marketId = match.params.marketId;
-                    return <MarketPage marketId={marketId} />;
+                    const venueId = match.params.venueId;
+                    return <VenuePage user={user} venueId={venueId} />;
                   }}
                 />
               </Switch>

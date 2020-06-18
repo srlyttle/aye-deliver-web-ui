@@ -22,24 +22,6 @@ const SideDrawer = ({ close, show, user, signout }) => {
 
   const listItemsData = [
     {
-      id: 1,
-      text: 'Provide Delivery Services',
-      route: '/deviveryservices',
-      icon: 'deliver',
-      alert: false,
-      clickHandle: close,
-      authRequired: false
-    },
-    {
-      id: 2,
-      text: 'Sell goods for Delivery',
-      route: '/sell',
-      icon: 'sell',
-      alert: false,
-      clickHandle: clickFunction,
-      authRequired: false
-    },
-    {
       id: 3,
       text: 'FAQs',
       route: '/faq',
@@ -50,8 +32,8 @@ const SideDrawer = ({ close, show, user, signout }) => {
     },
     {
       id: 4,
-      text: 'Markets',
-      route: '/markets',
+      text: 'Venues',
+      route: '/venues',
       icon: 'shopping-basket',
       alert: false,
       clickHandle: clickFunction,
