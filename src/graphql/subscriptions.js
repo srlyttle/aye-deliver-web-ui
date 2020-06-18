@@ -193,3 +193,180 @@ export const onDeleteProduct = /* GraphQL */ `
     }
   }
 `;
+export const onCreateVenue = /* GraphQL */ `
+  subscription OnCreateVenue {
+    onCreateVenue {
+      id
+      name
+      Seatings {
+        items {
+          id
+          name
+          description
+          outside
+          maxPeople
+          foodOnly
+          depositRequired
+          owner
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      tags
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateVenue = /* GraphQL */ `
+  subscription OnUpdateVenue {
+    onUpdateVenue {
+      id
+      name
+      Seatings {
+        items {
+          id
+          name
+          description
+          outside
+          maxPeople
+          foodOnly
+          depositRequired
+          owner
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      tags
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteVenue = /* GraphQL */ `
+  subscription OnDeleteVenue {
+    onDeleteVenue {
+      id
+      name
+      Seatings {
+        items {
+          id
+          name
+          description
+          outside
+          maxPeople
+          foodOnly
+          depositRequired
+          owner
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      tags
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateSeating = /* GraphQL */ `
+  subscription OnCreateSeating($owner: String!) {
+    onCreateSeating(owner: $owner) {
+      id
+      name
+      description
+      venue {
+        id
+        name
+        Seatings {
+          nextToken
+        }
+        tags
+        owner
+        createdAt
+        updatedAt
+      }
+      file {
+        bucket
+        region
+        key
+      }
+      outside
+      maxPeople
+      foodOnly
+      depositRequired
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateSeating = /* GraphQL */ `
+  subscription OnUpdateSeating($owner: String!) {
+    onUpdateSeating(owner: $owner) {
+      id
+      name
+      description
+      venue {
+        id
+        name
+        Seatings {
+          nextToken
+        }
+        tags
+        owner
+        createdAt
+        updatedAt
+      }
+      file {
+        bucket
+        region
+        key
+      }
+      outside
+      maxPeople
+      foodOnly
+      depositRequired
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteSeating = /* GraphQL */ `
+  subscription OnDeleteSeating($owner: String!) {
+    onDeleteSeating(owner: $owner) {
+      id
+      name
+      description
+      venue {
+        id
+        name
+        Seatings {
+          nextToken
+        }
+        tags
+        owner
+        createdAt
+        updatedAt
+      }
+      file {
+        bucket
+        region
+        key
+      }
+      outside
+      maxPeople
+      foodOnly
+      depositRequired
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;

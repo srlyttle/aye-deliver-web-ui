@@ -11,7 +11,7 @@ const { Text } = Typography;
 
 const HomePage = ({ history }) => {
   const getStartedClick = () => {
-    history.push('/markets');
+    history.push('/venues');
   };
 
   return (
@@ -19,12 +19,12 @@ const HomePage = ({ history }) => {
       <div className="landing-container">
         <div className="text-container">
           <div className="title">
-            <h1>Make your deliveries more efficient and grow profits</h1>
+            <h1>Maximising occupancy and tracking customers</h1>
           </div>
           <div className="sub-text">
             <Text>
-              Our platform enables you to sell and then deliver your products
-              through a network of delivery providers
+              Our platform enables you to provide real time availability and
+              venue customer tracking
             </Text>
           </div>
           <div className="home-get-start-button">

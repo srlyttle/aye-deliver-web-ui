@@ -158,6 +158,123 @@ export const getUser = /* GraphQL */ `
     }
   }
 `;
+export const getVenue = /* GraphQL */ `
+  query GetVenue($id: ID!) {
+    getVenue(id: $id) {
+      id
+      name
+      Seatings {
+        items {
+          id
+          name
+          description
+          outside
+          maxPeople
+          foodOnly
+          depositRequired
+          owner
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      tags
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listVenues = /* GraphQL */ `
+  query ListVenues(
+    $filter: ModelVenueFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listVenues(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        Seatings {
+          nextToken
+        }
+        tags
+        owner
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getSeating = /* GraphQL */ `
+  query GetSeating($id: ID!) {
+    getSeating(id: $id) {
+      id
+      name
+      description
+      venue {
+        id
+        name
+        Seatings {
+          nextToken
+        }
+        tags
+        owner
+        createdAt
+        updatedAt
+      }
+      file {
+        bucket
+        region
+        key
+      }
+      outside
+      maxPeople
+      foodOnly
+      depositRequired
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listSeatings = /* GraphQL */ `
+  query ListSeatings(
+    $filter: ModelSeatingFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listSeatings(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        description
+        venue {
+          id
+          name
+          tags
+          owner
+          createdAt
+          updatedAt
+        }
+        file {
+          bucket
+          region
+          key
+        }
+        outside
+        maxPeople
+        foodOnly
+        depositRequired
+        owner
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const searchMarkets = /* GraphQL */ `
   query SearchMarkets(
     $filter: SearchableMarketFilterInput
@@ -175,6 +292,35 @@ export const searchMarkets = /* GraphQL */ `
         id
         name
         products {
+          nextToken
+        }
+        tags
+        owner
+        createdAt
+        updatedAt
+      }
+      nextToken
+      total
+    }
+  }
+`;
+export const searchVenues = /* GraphQL */ `
+  query SearchVenues(
+    $filter: SearchableVenueFilterInput
+    $sort: SearchableVenueSortInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    searchVenues(
+      filter: $filter
+      sort: $sort
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
+        Seatings {
           nextToken
         }
         tags

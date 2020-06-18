@@ -1,0 +1,22 @@
+.market-list {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  overflow-x: scroll;
+}
+.custom-form-buttons {
+  display: flex;
+  width: 76%;
+  padding-bottom: 1rem;
+  .form-buttons {
+    display: flex;
+  }
+}
+.buttons-spacer {
+  flex: 1;
+}
+@media (max-width: 565px) {
+  .custom-form-buttons {
+    display: flex;
+    width: 100%;
+  }
+}

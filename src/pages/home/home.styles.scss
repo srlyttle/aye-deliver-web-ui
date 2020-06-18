@@ -7,6 +7,7 @@
   }
 
   .text-container {
+    margin-top: 5rem;
     display: flex;
 
     flex-direction: column;
@@ -16,13 +17,13 @@
     }
     .home-get-start-button {
       margin-top: 3rem;
-      margin-left: 4rem;
+      // margin-left: 4rem;
     }
   }
   .image-container {
     //resize: horizontal;
     svg {
-      //   max-width: 75%;
+      max-width: 100%;
     }
     img {
       //resize: horizontal;
@@ -50,5 +51,9 @@
     svg {
       display: none;
     }
+  }
+  .text-container {
+    width: 100%;
+    align-content: space-around;
   }
 }
