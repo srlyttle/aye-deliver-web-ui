@@ -8,20 +8,10 @@ import {
   Popconfirm,
   Form,
   Divider,
-  Button
+  Button,
+  Switch
 } from 'antd';
 import AddSeatingModal from './add-seating-modal.component';
-
-const originData = [];
-
-for (let i = 0; i < 5; i++) {
-  originData.push({
-    key: i.toString(),
-    name: `Table ${i}`,
-    maxPeople: 32,
-    outside: i % 2 === 0 ? 'Yes' : 'No'
-  });
-}
 
 const EditableCell = ({
   editing,
@@ -74,7 +64,7 @@ const EditableTable = ({
   deleteSeatingItem
 }) => {
   const transformedItems = seatingList.map((s, i) => {
-    return { ...s, key: i, outside: s.outside ? 'Yes' : 'No' };
+    return { ...s, key: i };
   });
   const [form] = Form.useForm();
   const [data, setData] = useState(transformedItems);
@@ -91,7 +81,7 @@ const EditableTable = ({
       key: count,
       name,
       maxPeople,
-      outside: outside ? 'Yes' : 'No'
+      outside
     };
     addSeatingItem(newData);
     const newDataItems = [...data, newData];
@@ -119,7 +109,7 @@ const EditableTable = ({
 
       if (index > -1) {
         const item = newData[index];
-        const input = { id: item.id, ...row };
+        const input = { id: item.id, outside: item.outside, ...row };
         editSeatingItem(input);
         newData.splice(index, 1, { ...item, ...row });
         setData(newData);
@@ -178,7 +168,25 @@ const EditableTable = ({
       </span>
     );
   };
-
+  const switchCell = (_, record) => {
+    return (
+      <Switch
+        onChange={e => onOutsideChange(e, record)}
+        defaultChecked={record.outside}
+        disabled={editingKey === ''}
+      />
+    );
+  };
+  const onOutsideChange = (isOutside, rec) => {
+    const newData = [...data];
+    const index = newData.findIndex(item => item.id === rec.id);
+    if (index > -1) {
+      const item = newData[index];
+      item.outside = isOutside;
+      newData[index] = item;
+      setData(newData);
+    }
+  };
   const columns = [
     {
       title: 'Name',
@@ -196,7 +204,8 @@ const EditableTable = ({
       title: 'Is Outside',
       dataIndex: 'outside',
       width: '40%',
-      editable: true
+      editable: true,
+      render: switchCell
     },
     {
       title: '',
@@ -209,9 +218,16 @@ const EditableTable = ({
       render: actionsCellDelete
     }
   ];
+
   const mergedColumns = columns.map(col => {
     if (!col.editable) {
       return col;
+    }
+    if (col.dataIndex === 'outside') {
+      return {
+        ...col,
+        render: switchCell
+      };
     }
 
     return {
