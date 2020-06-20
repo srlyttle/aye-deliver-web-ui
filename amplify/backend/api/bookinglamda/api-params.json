@@ -1,0 +1,41 @@
+{
+    "paths": [
+        {
+            "name": "/book",
+            "lambdaFunction": "bookinglamda",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            }
+        }
+    ],
+    "resourceName": "bookinglamda",
+    "apiName": "bookinglamda",
+    "functionArns": [
+        {
+            "lambdaFunction": "bookinglamda"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-ayedeliverwebui-dev-125150-authRole",
+        "unAuthRoleName": "amplify-ayedeliverwebui-dev-125150-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "bookinglamda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
